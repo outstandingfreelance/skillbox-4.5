@@ -1,0 +1,7 @@
+.searchbar {
+    width: 192px;
+    height: 30px;
+    border-radius: 37%;
+    background: url("../../../img/header-search.svg") no-repeat contain left center;
+    padding: 0 16px;
+}
