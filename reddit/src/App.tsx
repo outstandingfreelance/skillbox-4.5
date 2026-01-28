@@ -2,34 +2,93 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Header } from './components/Header/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+
+
     </>
   )
 }
+
+
+function pickFromSyntheticEvent{
+  return (key) => (fn) => (e) => {
+    fn(e.currentTarget[key])
+  }
+}
+
+function pickSuntheticEvent{
+  return (function (key) {
+    return function (fn) {
+      return function (e) {
+        fn(e.currentTarget[key])
+      }
+    }
+  })
+}
+
+function Input(props: { onChange: (value) => void, value }) {
+  ...
+}
+
+
+function UnstandardLink(props) {
+  return (
+    <a onClick={preventAll(props.onClick)}>Hello</a>
+  )
+}
+
+
+function preventDefault(fn) {
+  return (e) => {
+    e.preventDefault()
+    fn(e)
+  }
+}
+
+function stopPropagation(fn) {
+  return (e) => {
+    e.stopPropagation()
+    fn(e)
+  }
+}
+
+
+
+function preventAll (fn1){
+  // const functionPreventDefault = preventDefault(fn1);
+  // const functionStopPropagation = stopPropagation(functionPreventDefault)
+  // return functionStopPropagation;
+
+
+  return (stopPropagation(preventDefault(fn1)))
+  
+  
+}
+
+interface inputProps {
+  onChange: (value: Function) => void;
+  value: string;
+}
+
+ 
+function someFunction (props: inputProps){
+
+}
+
+
+function composeTwo(fn1, fn2) {
+  return function(arg) {
+    return fn2(fn1(arg));
+  };
+}
+
+const finalPrice = composeTwo(addTax, applyDiscount);
+console.log(finalPrice(100)); // 110
+
 
 export default App

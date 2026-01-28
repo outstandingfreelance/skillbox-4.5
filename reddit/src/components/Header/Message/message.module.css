@@ -1,0 +1,25 @@
+.message-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.message-count {
+    content: '';
+    display: block;
+    background-color: #c63;
+    border-radius: 50%;
+}
+
+
+
+@media (min-width: 320px) {
+    .message-count {
+        width: 12.77px;
+        height: 12.77px;
+    }
+    
+    .message-link {
+        width: 30px;
+    }
+}

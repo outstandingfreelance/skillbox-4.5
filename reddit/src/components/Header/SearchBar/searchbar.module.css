@@ -1,0 +1,23 @@
+.search-bar {
+    background-color: hsl(0, 0%, calc(100% - 4%));
+    border: none;
+    outline: none;
+    background-image: url('/public/search-bar-icon.svg');
+    background-repeat: no-repeat;
+}
+
+.search-bar::placeholder {
+    color: hsl(0, 0%, calc(100% - 23%));
+}
+
+@media (min-width: 320px) {
+    .search-bar {
+        border-radius: 30px;
+        height: 30px;
+        width: 192px;
+        padding-left: 31px;
+        background-size: 11px 11px;
+        background-position: 16px center;
+        margin-right: 14px;
+    }
+}

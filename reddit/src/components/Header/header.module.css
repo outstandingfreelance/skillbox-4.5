@@ -1,0 +1,26 @@
+.header {
+    background-color: hsl(0, 0%, 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-avatar {
+    border-radius: 50%;
+
+}
+
+@media(min-width: 320px) {
+    .header {
+        border-radius: 0 0 7px 7px;
+        height: 58px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+        padding: 0 20px;
+    }
+
+    .header-avatar {
+        width: 30px;
+        height: 30px;
+        margin-right: 14px;
+    }
+}
