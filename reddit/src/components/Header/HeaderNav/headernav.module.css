@@ -1,0 +1,16 @@
+.header-nav{
+    width: 100%;
+    width: 320px;
+}
+
+.header-nav-list{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.header-nav-item{
+
+}

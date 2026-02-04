@@ -1,13 +1,20 @@
 .header {
     background-color: hsl(0, 0%, 100%);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 
 .header-avatar {
     border-radius: 50%;
 
+}
+
+.header-controls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 14px;
 }
 
 @media(min-width: 320px) {
