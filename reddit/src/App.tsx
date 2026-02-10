@@ -3,11 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import React from 'react'
 import './App.css'
-import { DynamicList } from '../DynamicList.tsx'
 import { generateId, generateRandomString } from './utils/react/generateRandomIndex.tsx'
 // import { Header } from '/Users/edgar/Desktop/рабочий стол/Skillbox/4 React/5/homework/skillbox-4.5/reddit/src/components/Header/Header.tsx'
 // import { LIST, handleAdd } from '../handleClick.ts'
-import { OurList } from '/Users/edgar/Desktop/рабочий стол/Skillbox/4 React/5/homework/skillbox-4.5/reddit/src/shared/components/OurList/OurList.tsx'
 import type { IOurListProps, TOurListChildrenProps } from './shared/components/OurList/OurList.tsx'
 import { merge } from './utils/js/merge';
 import { GenericList } from './shared/components/GenericList/GenericList.tsx';
@@ -45,10 +43,8 @@ const [list, setList] = useState(LIST);
   return (
     <>
       {/* <Header /> */}
-      {/* <DynamicList list={list} onItemClick={handleClick(setList)} onAdd={handleAdd(setList)} /> */}
       <button onClick={() => handleAdd(setList)}>Click me</button>
-      {/* <OurList someShitHere={list} onClick={(id: string) => handleClick(id)} /> */}
-      <GenericList onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
+      <GenericList ManuallySetLayoutTagHere='li' onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
       <p>
         If you see this text, the app is not broken
       </p>

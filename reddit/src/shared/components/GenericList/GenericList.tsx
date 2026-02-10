@@ -5,32 +5,34 @@ import type { TOurListChildrenProps } from 'src/shared/components/OurList/OurLis
 interface IGenericListProps {
   someShitHere: TOurListChildrenProps[];
   onClick: (id: string) => void;
+}
+
+interface IItem {
+  id: string;
+  text: string;
   ManuallySetLayoutTagHere: string;
-  As?: 'a' | 'li' | 'button' | 'div';
+  onClick: (id: string) => void;
+  className?: string;
+  href?: string;
 }
 
-interface IItem{
-
-}
 
 
-
-export function GenericList( {someShitHere, onClick} : IGenericListProps ) {
+export function GenericList({ someShitHere, onClick }: IGenericListProps) {
   return (
     <>
-      { someShitHere.map(({ ManuallySetLayoutTagHere = 'div', text, className, id, href }) => {
+      {someShitHere.map(({ ManuallySetLayoutTagHere = 'div', text, className, id, href }) => {
         const Tag = ManuallySetLayoutTagHere as keyof React.JSX.IntrinsicElements;
 
-        return(
+        return (
           <Tag key={id} className={className} onClick={() => onClick(id)} href={href}>
-
             {text}
           </Tag>
         )
       }
-    
-    
-    ) }
+
+
+      )}
     </>
   );
 }
