@@ -13,6 +13,7 @@ export function Header() {
       <SearchBar />
 
       <Message />
+      
     </div>
   );
 }

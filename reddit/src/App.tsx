@@ -5,17 +5,53 @@ import React from 'react'
 import './App.css'
 import { DynamicList } from '../DynamicList.tsx'
 import { generateId, generateRandomString } from './utils/react/generateRandomIndex.tsx'
-
-
-import { LIST, handleAdd, handleClick } from '../handleClick.ts'
+// import { Header } from '/Users/edgar/Desktop/рабочий стол/Skillbox/4 React/5/homework/skillbox-4.5/reddit/src/components/Header/Header.tsx'
+// import { LIST, handleAdd } from '../handleClick.ts'
+import { OurList } from '/Users/edgar/Desktop/рабочий стол/Skillbox/4 React/5/homework/skillbox-4.5/reddit/src/shared/components/OurList/OurList.tsx'
+import type { IOurListProps, TOurListChildrenProps } from './shared/components/OurList/OurList.tsx'
+import { merge } from './utils/js/merge';
+import { GenericList } from './shared/components/GenericList/GenericList.tsx';
 
 export default function App() {
-  const [list, setList] = React.useState(LIST);
+  const LIST: TOurListChildrenProps[] = [
+    {
+      text: "Here"
+    },
+    {
+      text: "We"
+    },
+    {
+      text: "Go"
+    },
+    {
+      text: "Hello"
+    },
+    {
+      text: "World"
+    }
+  ].map((item) => ({ ...item, id: generateRandomString(), onClick: (id: string) => handleClick({ id, text: item.text }) }));
+  
+const [list, setList] = useState(LIST);
+
+  const handleAdd = (setList: React.Dispatch<React.SetStateAction<TOurListChildrenProps[]>>) => {
+    setList((prev) => [...prev, { id: generateRandomString(), text: generateRandomString() }]);
+  };
+
+  function handleClick(id: TOurListChildrenProps['id']) {
+    setList((prev: TOurListChildrenProps[]) => prev.filter((item) => item.id !== id));
+  }
+
 
   return (
     <>
-
-      <DynamicList list={list} onItemClick={handleClick(setList)} onAdd={handleAdd(setList)} />
+      {/* <Header /> */}
+      {/* <DynamicList list={list} onItemClick={handleClick(setList)} onAdd={handleAdd(setList)} /> */}
+      <button onClick={() => handleAdd(setList)}>Click me</button>
+      {/* <OurList someShitHere={list} onClick={(id: string) => handleClick(id)} /> */}
+      <GenericList onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
+      <p>
+        If you see this text, the app is not broken
+      </p>
     </>
   )
 }
