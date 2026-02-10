@@ -6,9 +6,16 @@ import './App.css'
 import { generateId, generateRandomString } from './utils/react/generateRandomIndex.tsx'
 // import { Header } from '/Users/edgar/Desktop/рабочий стол/Skillbox/4 React/5/homework/skillbox-4.5/reddit/src/components/Header/Header.tsx'
 // import { LIST, handleAdd } from '../handleClick.ts'
-import type { IOurListProps, TOurListChildrenProps } from './shared/components/OurList/OurList.tsx'
 import { merge } from './utils/js/merge';
-import { GenericList } from './shared/components/GenericList/GenericList.tsx';
+import { GenericList } from './shared/components/GenericList/GenericList';
+import { Dropdown } from './shared/components/Dropdown/Dropdown'
+
+
+type TOurListChildrenProps = {
+  id: string;
+  text: string;
+  onClick: (id: string) => void;
+}
 
 export default function App() {
   const LIST: TOurListChildrenProps[] = [
@@ -44,7 +51,13 @@ const [list, setList] = useState(LIST);
     <>
       {/* <Header /> */}
       <button onClick={() => handleAdd(setList)}>Click me</button>
-      <GenericList ManuallySetLayoutTagHere='li' onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
+      <GenericList onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
+      <Dropdown onOpen={() => console.log('closed')} onClose={() => console.log("opened ")} isOpenManuallySetValue={true} button={<button>Dropdown</button>}>
+        <ul>
+          <li>1</li>
+          <li onClick={() => console.log('2')}>2</li>
+        </ul>
+      </Dropdown>
       <p>
         If you see this text, the app is not broken
       </p>

@@ -16,8 +16,6 @@ interface IItem {
   href?: string;
 }
 
-
-
 export function GenericList({ someShitHere, onClick }: IGenericListProps) {
   return (
     <>

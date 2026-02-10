@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    flex: 1 1 0;
+}
+
+
+.list-container{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.338);
+    border-radius: 4px;
+}
