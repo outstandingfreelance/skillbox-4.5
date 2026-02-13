@@ -1,6 +1,6 @@
 import styles from './dropdown.module.css';
 import { useState, useEffect } from 'react';
-import {noop} from '../../../utils/js/noop.ts'
+import { noop } from '../../../utils/js/noop.ts'
 
 
 interface IDropdownProps {
@@ -19,7 +19,7 @@ interface IDropdownProps {
 // хуки это больше про фп, они заменяют очеь много кода для создания самописных lifeCycle-хуков
 
 
-export function Dropdown({ button, children, isOpenManuallySetValue, onOpen=noop, onClose=noop }: IDropdownProps) {
+export function Dropdown({ button, children, isOpenManuallySetValue, onOpen = noop, onClose = noop }: IDropdownProps) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(isOpenManuallySetValue);
   // в то время: как useState задаёт только начальное состояние
   //  (задает начальное состояние , затем компонент рендерится.
@@ -30,15 +30,16 @@ export function Dropdown({ button, children, isOpenManuallySetValue, onOpen=noop
       setIsDropDownOpen(!isDropDownOpen);
     }
   }
-
+  // его не надо коментить, он нужен для того, чтобы при изменении isOpenManuallySetValue
+  // компонент перерендерился
   useEffect(() => setIsDropDownOpen(isOpenManuallySetValue), [isOpenManuallySetValue])
   useEffect(() => isDropDownOpen ? onOpen : onClose, [isDropDownOpen]);
 
 
   return (
     <div className={styles.container}>
-      {/* 2) Затем отреагирует уже сам список (примет во вниамание ищменившеес] состояние и свернётся ) */}
-      <div onClick={() => handleOpen}>
+      {/* 2) Затем отреагирует уже сам список (примет во внимание изменившееc состояние и свернётся ) */}
+      <div onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
         {button}
       </div>
 
