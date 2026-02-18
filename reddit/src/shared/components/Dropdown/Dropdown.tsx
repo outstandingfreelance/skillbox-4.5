@@ -1,11 +1,9 @@
 import styles from './dropdown.module.css';
 import { useState, useEffect } from 'react';
 import { noop } from '../../../utils/js/noop.ts'
-
+import { GenericList } from '../GenericList/GenericList.tsx';
 
 interface IDropdownProps {
-  children: React.ReactNode;
-  button: React.ReactNode;
   isOpenManuallySetValue?: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -19,7 +17,7 @@ interface IDropdownProps {
 // хуки это больше про фп, они заменяют очеь много кода для создания самописных lifeCycle-хуков
 
 
-export function Dropdown({ button, children, isOpenManuallySetValue, onOpen = noop, onClose = noop }: IDropdownProps) {
+export function Dropdown({ isOpenManuallySetValue, onOpen = noop, onClose = noop, postId, listClass, itemClass }: IDropdownProps) {
   const [isDropDownOpen, setIsDropDownOpen] = useState(isOpenManuallySetValue);
   // в то время: как useState задаёт только начальное состояние
   //  (задает начальное состояние , затем компонент рендерится.
@@ -40,19 +38,24 @@ export function Dropdown({ button, children, isOpenManuallySetValue, onOpen = no
     <div className={styles.container}>
       {/* 2) Затем отреагирует уже сам список (примет во внимание изменившееc состояние и свернётся ) */}
       <div onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
-        {button}
+        <button className={styles.dropdownButton}></button>
       </div>
 
       {/* 1) сперва чилсдрен примет на себя нажатие */}
       {isDropDownOpen && (
         <div className={styles.listContainer}>
+          <ul onClick={({postId}: React.MouseEvent<HTMLUListElement, MouseEvent>) => noop()} className={{`styles.${listClass}`}}>
+            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemHide} ${styles.${itemClass}}`}>Скрыть</li>
+            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemComplain} ${styles.${itemClass}}`}>Пожаловаться</li>
+          </ul>
+
+          <GenericList someShitHere={[]} onClick={handleOpen} />
+
           <div onClick={() => setIsDropDownOpen(false)}>
-            {children}
+            <button className={styles.closeButton}>Close</button>
           </div>
         </div>
-      )
-
-      }
+      )}
     </div>
   );
 }

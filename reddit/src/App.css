@@ -47,10 +47,28 @@ table {
 	border-spacing: 0;
 }
 
+button{
+	padding: 0;
+}
 
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
   /* padding: 2rem; */
   /* text-align: center; */
+}
+
+
+:root{
+	--white-lightness: 100%;
+	--primary-color: #fff;
+	--secondary-color: #000;
+	--tertiary-color: hsl(0, 0%, calc(var(--white-lightness) - 7%));
+	--quaternary-color: #999;
+	--chinquinary-color: #666;
+	--sexinary-color: #333;
+	--septinary-color: #000;
+	--octinary-color: #000;
+	--secondary-font-color: hsl(0, 0%, calc(var(--white-lightness) - 40%));
+	--tertiary-font-color: hsl(0, 0%, calc(var(--white-lightness) - 60%));
 }

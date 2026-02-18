@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './GenericList.module.css';
-import type { TOurListChildrenProps } from 'src/shared/components/OurList/OurList.tsx';
 
 interface IGenericListProps {
-  someShitHere: TOurListChildrenProps[];
+  someShitHere: [];
   onClick: (id: string) => void;
 }
 
@@ -14,22 +13,24 @@ interface IItem {
   onClick: (id: string) => void;
   className?: string;
   href?: string;
+  bndImg?: string;
+  listClass?: string;
+  itemClass?: string;
 }
 
-export function GenericList({ someShitHere, onClick }: IGenericListProps) {
+export function GenericList({ someShitHere, onClick, listClass, itemClass }: IGenericListProps) {
   return (
     <>
-      {someShitHere.map(({ ManuallySetLayoutTagHere = 'div', text, className, id, href }) => {
+      {someShitHere.map(({ ManuallySetLayoutTagHere = 'div', text, className, id, href, bndImg }) => {
         const Tag = ManuallySetLayoutTagHere as keyof React.JSX.IntrinsicElements;
 
         return (
           <Tag key={id} className={className} onClick={() => onClick(id)} href={href}>
-            {text}
+            {Tag === 'ul' ? <li className={itemClass}>{text}</li> : '' }
+            {/* {text} */}
           </Tag>
         )
       }
-
-
       )}
     </>
   );

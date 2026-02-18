@@ -52,11 +52,8 @@ const [list, setList] = useState(LIST);
       {/* <Header /> */}
       <button onClick={() => handleAdd(setList)}>Click me</button>
       <GenericList onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
-      <Dropdown onOpen={() => console.log('closed')} onClose={() => console.log("opened ")} isOpenManuallySetValue={true} button={<button>Dropdown</button>}>
-        <ul>
-          <li>1</li>
-          <li onClick={() => console.log('2')}>2</li>
-        </ul>
+      <Dropdown onOpen={() => console.log('closed')} onClose={() => console.log("opened ")} isOpenManuallySetValue={false} postId="1234">
+
       </Dropdown>
       <p>
         If you see this text, the app is not broken

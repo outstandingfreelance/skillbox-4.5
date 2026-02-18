@@ -75,5 +75,25 @@ const commentsWithId = comments.map(pick('id'))
 
 const filtredRelatedCommenst = comments.filter(({id})=> id !== 22)
 const filtredUnrelatedCommenst = comments.filter(pipe(pick('id'), isEqual(22), cond))
+const fiteredIsItSameAsContent = (id:number) => comments.filter(pipe(pick('id'), isEqual(id), cond))
+const createFilterBy = (prop: string) => (id:number) => comments.filter(pipe(pick(prop), isEqual(id), cond))
 
 
+const createFilterWithId = createFilterBy('id');
+const createFilterWithValue = createFilterBy('value');
+const filterWithId22 = createFilterBy('id')(22);
+
+const getValueNumber = pipe(
+    pick("currentTarget"),
+    pick("value"),
+    parseInt
+)
+
+
+
+// в ФП НАСЛЕДОВАНИЕ ЗАМЕНЯЮТ НА КОМПОЗИЦИЮ (НЕ КАПСОМ текст)
+
+
+// ramda.js (ramdajs.com) - библиотека, в которой есть аналоги почти всех утилитарных функицй
+// и она имеет уже затипизированной такую штуку чтобы можно было использовать не карирование, а композицию. там очень долго писать для такого кейса типизацию (для замениы кариирования композициями)
+// а там всэ уже затипищировано
