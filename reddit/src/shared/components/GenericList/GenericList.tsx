@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './GenericList.module.css';
+import { Icon } from '../Icon/Icon';
 
 interface IGenericListProps {
-  someShitHere: [];
+  PList: [];
   onClick: (id: string) => void;
+  className?: string;
+  ManuallySetLayoutTagHere?: string;
+  textFromParent: string;
+  text: string;
 }
 
 interface IItem {
@@ -18,16 +23,17 @@ interface IItem {
   itemClass?: string;
 }
 
-export function GenericList({ someShitHere, onClick, listClass, itemClass }: IGenericListProps) {
+export function GenericList({ PList, onClick, listClass, itemClass, text }: IGenericListProps) {
   return (
     <>
-      {someShitHere.map(({ ManuallySetLayoutTagHere = 'div', text, className, id, href, bndImg }) => {
+      {PList.map(({ ManuallySetLayoutTagHere = 'div', text: textFromParent, className, id, href, onClick = { noop } }) => {
         const Tag = ManuallySetLayoutTagHere as keyof React.JSX.IntrinsicElements;
 
         return (
-          <Tag key={id} className={className} onClick={() => onClick(id)} href={href}>
-            {Tag === 'ul' ? <li className={itemClass}>{text}</li> : '' }
-            {/* {text} */}
+          <Tag key={id} className={className} href={href}>
+            {Tag === 'ul' ? <li className={itemClass}>{textFromParent}
+              <Icon src="/icon.svg" alt="dropdown list item icon" />
+            </li> : ''}
           </Tag>
         )
       }

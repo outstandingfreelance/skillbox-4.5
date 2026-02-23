@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -9,6 +10,7 @@ import { generateId, generateRandomString } from './utils/react/generateRandomIn
 import { merge } from './utils/js/merge';
 import { GenericList } from './shared/components/GenericList/GenericList';
 import { Dropdown } from './shared/components/Dropdown/Dropdown'
+import { TestTextList } from './shared/components/TestTextList/TestTextList';
 
 
 type TOurListChildrenProps = {
@@ -51,7 +53,11 @@ const [list, setList] = useState(LIST);
     <>
       {/* <Header /> */}
       <button onClick={() => handleAdd(setList)}>Click me</button>
-      <GenericList onClick={(id: string)=>handleClick(id)} someShitHere={list}/>
+      <GenericList onClick={(id: string)=>handleClick(id)} PList={list} text="Hello"/>
+
+
+      <TestTextList text={list.map((item) => item.text)} />
+
       <Dropdown onOpen={() => console.log('closed')} onClose={() => console.log("opened ")} isOpenManuallySetValue={false} postId="1234">
 
       </Dropdown>

@@ -7,6 +7,9 @@ interface IDropdownProps {
   isOpenManuallySetValue?: boolean;
   onOpen: () => void;
   onClose: () => void;
+  postId?: string;
+  listClass?: string;
+  itemClass?: string;
 }
 
 
@@ -44,15 +47,20 @@ export function Dropdown({ isOpenManuallySetValue, onOpen = noop, onClose = noop
       {/* 1) сперва чилсдрен примет на себя нажатие */}
       {isDropDownOpen && (
         <div className={styles.listContainer}>
-          <ul onClick={({postId}: React.MouseEvent<HTMLUListElement, MouseEvent>) => noop()} className={{`styles.${listClass}`}}>
-            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemHide} ${styles.${itemClass}}`}>Скрыть</li>
-            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemComplain} ${styles.${itemClass}}`}>Пожаловаться</li>
+
+          <GenericList PList={[]} onClick={handleOpen} className={listClass ? `styles.${listClass}` : ''} />
+
+          <ul onClick={({ postId }: React.MouseEvent<HTMLUListElement, MouseEvent>) => noop()} className={listClass ? `styles.${listClass}` : ''}>
+            {/* <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemHide} ${styles.itemClass}`}>Скрыть</li> */}
+            {/* <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemComplain} ${styles.itemClass}`}>Пожаловаться</li> */}
+            {/* <li onClick={() => (console.log(postId))} className="asfdafs">Скрыть</li>
+            <li onClick={() => (console.log(postId))} className="asfdafs">Пожаловаться</li> */}
           </ul>
 
-          <GenericList someShitHere={[]} onClick={handleOpen} />
+          <GenericList PList={[{ text: 'Скрыть', onClick: () => console.log("text") }, { text: 'Пожаловаться', text: 'text', onClick: () => console.log('Пожаловаться')   }]} onClick={handleOpen} ManuallySetLayoutTagHere="ul" />
 
           <div onClick={() => setIsDropDownOpen(false)}>
-            <button className={styles.closeButton}>Close</button>
+            <button id='button' className={styles.closeButton}>Close</button>
           </div>
         </div>
       )}

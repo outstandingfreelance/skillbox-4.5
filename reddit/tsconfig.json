@@ -1,10 +1,27 @@
 {
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ],
   "compilerOptions": {
-    "types": ["jest", "node"]
-  }
+    "types": [
+      "jest",
+      "node",
+      "@testing-library/jest-dom"
+    ],
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": [
+        "/src/*"
+      ]
+    },
+    "jsx": "react-jsx"
+  },
+  "module": "ES6",
+  "moduleResolution": "Node"
 }
