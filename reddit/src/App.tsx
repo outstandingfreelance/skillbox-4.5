@@ -10,6 +10,7 @@ import { Text } from './shared/components/Text/Text';
 import { EColors } from './shared/components/Text/Text';
 import { Break } from 'src/shared/Break/Break';
 import { Icon } from './shared/components/Icon/Icon';
+import { IconName } from './shared/components/Icon/Icon';
 
 type TOurListChildrenProps = {
   id: string;
@@ -62,7 +63,7 @@ export default function App() {
       <Text size={20} tabletSize={16} desktopSize={28} color={EColors.black}>Hello</Text>
       <Break size={4} inline />
       <Text size={16} tabletSize={12} color={EColors.black}>Hello</Text>
-      <Icon name="vite" size={24} />
+      <Icon name={IconName.vite} alt="vite icon" size={24} />
       <p>
         If you see this text, the app is not broken
       </p>

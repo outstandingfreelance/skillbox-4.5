@@ -1,12 +1,9 @@
-import styles from './Icon.module.css';
-import classNames from 'classnames';
-
-enum IconName {
-  "like",
-  "dislike",
-  "comment",
-  "share",
-  "vite",
+export enum IconName {
+  like = "like",
+  dislike = "dislike",
+  comment = "comment",
+  share = "share",
+  vite = "vite",
 }
 
 interface IIconProps {
@@ -16,11 +13,7 @@ interface IIconProps {
 }
 
 export function Icon({ alt, size, name }: IIconProps) {
-  const iconSizes = classNames({
-    [styles[`${size}`]]: size,
-  });
-
   return (
-    <img className={iconSizes} style={{ width: size, height: size }} src={`public/icons/${name}.svg`} alt={alt} />
+    <img style={{ width: size, height: size }} src={`public/icons/${name}.svg`} alt={alt} />
   );
 }
