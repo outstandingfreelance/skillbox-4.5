@@ -1,0 +1,61 @@
+/* Padding классы */
+.s4 {
+    height: 1px;
+    width: 1px;
+    box-sizing: content-box;
+    padding: 4px 0 0;
+}
+
+.s8 {
+    height: 1px;
+    width: 1px;
+    box-sizing: content-box;
+    padding: 8px 0 0;
+}
+
+.s12 {
+    height: 1px;
+    width: 1px;
+    box-sizing: content-box;
+    padding: 12px 0 0;
+}
+
+.s16 {
+    height: 1px;
+    width: 1px;
+    box-sizing: content-box;
+    padding: 16px 0 0;
+}
+
+.s20 {
+    height: 1px;
+    width: 1px;
+    box-sizing: content-box;
+    padding: 20px 0 0;
+}
+
+/* Inline класс */
+.inline {
+    display: inline;
+}
+
+/* Top классы */
+.top.s4 {
+    padding: 4px 0 0;
+}
+
+.top.s8 {
+    padding: 8px 0 0;
+}
+
+.top.s12 {
+    padding: 12px 0 0;
+}
+
+.top.s16 {
+    padding: 16px 0 0;
+}
+
+.top.s20 {
+    padding: 20px 0 0;
+}

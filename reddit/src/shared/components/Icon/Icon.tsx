@@ -1,9 +1,26 @@
-import React from 'react';
 import styles from './Icon.module.css';
+import classNames from 'classnames';
 
+enum IconName {
+  "like",
+  "dislike",
+  "comment",
+  "share",
+  "vite",
+}
 
-export function Icon({ src, alt }: { src: string; alt: string }) {
+interface IIconProps {
+  alt: string;
+  size?: number;
+  name: IconName;
+}
+
+export function Icon({ alt, size, name }: IIconProps) {
+  const iconSizes = classNames({
+    [styles[`${size}`]]: size,
+  });
+
   return (
-    <img className={styles.icon} src={src} alt={alt} />
+    <img className={iconSizes} style={{ width: size, height: size }} src={`public/icons/${name}.svg`} alt={alt} />
   );
 }

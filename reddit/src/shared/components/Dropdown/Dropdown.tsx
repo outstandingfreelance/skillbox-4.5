@@ -1,7 +1,6 @@
 import styles from './dropdown.module.css';
 import { useState, useEffect } from 'react';
 import { noop } from '../../../utils/js/noop.ts'
-import { GenericList } from '../GenericList/GenericList.tsx';
 
 interface IDropdownProps {
   isOpenManuallySetValue?: boolean;
@@ -39,6 +38,7 @@ export function Dropdown({ isOpenManuallySetValue, onOpen = noop, onClose = noop
 
   return (
     <div className={styles.container}>
+      <div className={styles.wrapper}></div>
       {/* 2) Затем отреагирует уже сам список (примет во внимание изменившееc состояние и свернётся ) */}
       <div onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
         <button className={styles.dropdownButton}></button>
@@ -47,18 +47,10 @@ export function Dropdown({ isOpenManuallySetValue, onOpen = noop, onClose = noop
       {/* 1) сперва чилсдрен примет на себя нажатие */}
       {isDropDownOpen && (
         <div className={styles.listContainer}>
-
-          <GenericList PList={[]} onClick={handleOpen} className={listClass ? `styles.${listClass}` : ''} />
-
-          <ul onClick={({ postId }: React.MouseEvent<HTMLUListElement, MouseEvent>) => noop()} className={listClass ? `styles.${listClass}` : ''}>
-            {/* <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemHide} ${styles.itemClass}`}>Скрыть</li> */}
-            {/* <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemComplain} ${styles.itemClass}`}>Пожаловаться</li> */}
-            {/* <li onClick={() => (console.log(postId))} className="asfdafs">Скрыть</li>
-            <li onClick={() => (console.log(postId))} className="asfdafs">Пожаловаться</li> */}
+          <ul onClick={(postId : React.MouseEvent<HTMLUListElement, MouseEvent>) => noop()} className={styles.dropdownList}>
+            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemHide} ${styles.itemClass}`}>Скрыть</li>
+            <li onClick={()=>(console.log(postId))} className={`${styles.dropdownItem} ${styles.dropdownItemComplain} ${styles.itemClass}`}>Пожаловаться</li>
           </ul>
-
-          <GenericList PList={[{ text: 'Скрыть', onClick: () => console.log("text") }, { text: 'Пожаловаться', text: 'text', onClick: () => console.log('Пожаловаться')   }]} onClick={handleOpen} ManuallySetLayoutTagHere="ul" />
-
           <div onClick={() => setIsDropDownOpen(false)}>
             <button id='button' className={styles.closeButton}>Close</button>
           </div>
